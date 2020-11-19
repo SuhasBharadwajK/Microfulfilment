@@ -1,0 +1,43 @@
+.left-nav {
+    width: 70px;
+    background-color: #191F37;
+    height: 100%;
+    float: left;
+    .buttons-container {
+        margin-top: 50px;
+
+        .icon-tile {
+            width: 50px;
+            height: 50px;
+            margin-left: 10px;
+            margin-bottom: 38px;
+            border-radius: 5px;
+            display: block;
+            padding-top: 7px;
+            
+            &.active {
+                background-color: #EA6333;
+                .icon {
+                    color: #FFF;
+                }
+            }
+        
+            .icon {
+                cursor: pointer;
+                color: #7C87AE;
+                font-size: 38px;
+                margin-left: auto;
+                margin-right: auto;
+                width: 40px;
+        
+                &:hover {
+                    color: #FFF;
+                }
+
+                span:focus {
+                    outline: none;
+                }
+            }
+        }
+    }
+}
