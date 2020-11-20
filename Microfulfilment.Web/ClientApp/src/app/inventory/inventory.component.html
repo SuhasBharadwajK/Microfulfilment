@@ -1,4 +1,67 @@
 <div class="content-container inventory-container">
-    <h2 class="float-left">Product Inventory</h2>
-    <button class="float-right btn btn-outline-primary mr-2">+ Add Product</button>
+    <div class="content-header inventory-header">
+        <h2 class="float-left">Product Inventory</h2>
+        <button class="float-right btn btn-outline-primary mr-2" (click)="addProduct()">+ Add Product</button>
+    </div>
+
+    <div class="inventory-table-container">
+        <ag-grid-angular class="inventory-table ag-theme-alpine" [rowData]="rowData" rowSelection="multiple"
+            [columnDefs]="columnDefs" (firstDataRendered)="onFirstDataRendered($event)"
+            (gridSizeChanged)="onGridSizeChanged($event)" (gridReady)="onGridReady($event)"
+            (rowSelected)="onRowSelected($event)" (selectionChanged)="onSelectionChanged($event)">
+        </ag-grid-angular>
+    </div>
 </div>
+
+<ng-template #addProductModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{productToAddOrEdit.id ? 'Edit' : 'Add'}} Product</h4>
+        <button type="button" class="close" aria-label="Close" (click)="dismissModal()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body p-4">
+        <form>
+            <div class="form-row">
+                <div class="form-group col-12">
+                    <label for="product-name">Product Name</label>
+                    <input id="product-name" class="form-control" name="product-name" [(ngModel)]="productToAddOrEdit.name">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-6">
+                    <label for="quantity">Quantity</label>
+                    <input id="quantity" class="form-control" name="quantity" [(ngModel)]="productToAddOrEdit.stock">
+                </div>
+                <div class="form-group col-6">
+                    <label for="barcode">Barcode</label>
+                    <input id="barcode" class="form-control" name="barcode" [(ngModel)]="productToAddOrEdit.barcode">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-6">
+                    <label for="retail-price">Retail Price</label>
+                    <input id="retail-price" class="form-control" name="retail-price" [(ngModel)]="productToAddOrEdit.retailPrice">
+                </div>
+                <div class="form-group col-6">
+                    <label for="cost-price">Cost Price</label>
+                    <input id="cost-price" class="form-control" name="cost-price" [(ngModel)]="productToAddOrEdit.costPrice">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-6">
+                    <label for="minimum-quantity">Minimum Quantity</label>
+                    <input id="minimum-quantity" class="form-control" name="minimum-quantity" [(ngModel)]="productToAddOrEdit.minimumQuantity">
+                </div>
+                <div class="form-group col-6">
+                    <label for="maximum-quantity">Maximum Quantity</label>
+                    <input id="maximum-quantity" class="form-control" name="maximum-quantity" [(ngModel)]="productToAddOrEdit.maximumQuantity">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="dismissModal()">Cancel</button>
+        <button type="button" class="btn btn-orange" (click)="saveProduct()">Save</button>
+    </div>
+</ng-template>

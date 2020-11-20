@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Provide sufficient contrast against white background */
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+
 html, body {
   height: 100%;
 }
@@ -50,3 +52,36 @@ code {
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.content-container {
+  height: 100%;
+  
+  .content-header {
+    padding: 5px 0;
+    @extend .overflow-auto;
+  }
+}
+
+.btn-orange {
+  color: #FFF !important;
+  background-color: #EA6333 !important;
+  border: 1px solid #C34E1D !important;
+
+  &:hover {
+    background-color: #FFF !important;
+    color: #C34E1D !important;
+  }
+}
+
+.modal-dialog {
+    max-width: 1000px !important;
+}
+
+@import "../node_modules/ag-grid-community/dist/styles/ag-grid.css";
+@import "../node_modules/ag-grid-community/dist/styles/ag-theme-alpine.css";
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

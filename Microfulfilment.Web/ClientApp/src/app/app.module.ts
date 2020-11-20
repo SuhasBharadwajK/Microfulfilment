@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
+import { AgGridModule } from 'ag-grid-angular';
+import { NgbModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
@@ -30,6 +33,8 @@ import { SupplierManagementComponent } from './supplier-management/supplier-mana
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    NgbModule,
+    AgGridModule.withComponents([]),
     RouterModule.forRoot([
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
@@ -38,7 +43,7 @@ import { SupplierManagementComponent } from './supplier-management/supplier-mana
       { path: 'dashboard', component: DashboardComponent },
       { path: 'inventory', component: InventoryComponent },
       { path: 'supplier-management', component: SupplierManagementComponent },
-    ])
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent]
